@@ -1,0 +1,82 @@
+name: FirstServerPlugin
+version: '${project.version}'
+main: me.firstserver.firstserverplugin.FirstServerPlugin
+api-version: 1.19
+authors: [ Xfirst_playerX ]
+description: Plugin for First Server
+website: https://youtube.com/channel/UCl_I0L73f7hLGnzsvn9jhoA
+depend: []
+commands:
+  god:
+    description: Become a god on the server!
+    usage: /<command>
+    aliases:
+      - godmode
+      - promode
+  feed:
+    description: Feed yourself!
+    usage: /<command>
+    aliases:
+      - food
+  repeat:
+    description: Repeat a message.
+    usage: /<command> <message>
+  joinc:
+    description: Tell the player that someone joined console.
+    usage: /<command> <player>
+  leavec:
+    description: Tell the player that someone left console.
+    usage: /<command> <player>
+  fart:
+    description: Fart a player.
+    usage: /<command> <player>
+  tpbow:
+    description: Give someone a Teleport Bow.
+    usage: /<command> [player]
+    aliases:
+      - teleportbow
+      - tpb
+  opitems:
+    description: Give someone OP items.
+    usage: /<command> [item] [player]
+    aliases:
+      - opi
+      - opitem
+  firstserver:
+    description: Basic command for First Server.
+    usage: /<command>
+    aliases:
+      - fs
+      - first
+      - firstserverplugin
+  bangui:
+    description: Open Ban GUI.
+    usage: /<command>
+    aliases:
+      - bang
+      - guiban
+      - fsban
+  spawner:
+    description: Give yourself a spawner.
+    usage: /<command> <mob-type>
+    aliases:
+      - spawners
+      - fsspawner
+  glowstick:
+    description: Give yourself a Glow Stick.
+    usage: /<command>
+    aliases:
+      - glows
+  lock:
+    description: Lock a block.
+    usage: /<command>
+    aliases:
+      - lockblock
+  holostick:
+    description: Give yourself a HoloStick.
+    usage: /<command>
+    aliases:
+      - hs
+  fallingblock:
+    description: Spawn a falling block.
+    usage: /<command> <block>

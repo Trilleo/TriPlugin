@@ -1,0 +1,17 @@
+
+#================================================
+#   /|                -Plugin for First Server  |
+#    |                                          |
+#    |     ___  _|_   -This is the config file  |
+#    |    |___   |                              |
+#   _|_    ___|  |_   -Plugin version: 1.5.0    |
+#================================================
+
+#Server Status Options:
+is-closed: false
+
+#Launch Pad Options:
+enableLaunchPad: true
+
+top-block: 'LIGHT_WEIGHTED_PRESSURE_PLATE'
+button-block: 'SLIME_BLOCK'
