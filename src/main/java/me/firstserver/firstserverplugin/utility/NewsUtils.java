@@ -50,7 +50,7 @@ public class NewsUtils {
         ArrayList<String> news3Lore = new ArrayList<>();
         news3Lore.add("   ");
         news3Lore.add(ChatColor.GREEN + "#1 Added color chat function.");
-        news3Lore.add(ChatColor.DARK_GRAY + "Use &+<Color Code> to activate.");
+        news3Lore.add(ChatColor.DARK_GRAY + "Use & + <Color Code> to activate.");
         news3Lore.add(ChatColor.DARK_GRAY + "See " + ChatColor.GOLD + "Minecraft Wiki" + ChatColor.DARK_GRAY + " for more info.");
 
         news3Meta.setDisplayName(ChatColor.AQUA + "Thread #3 - 2023/4/22 - 1.6.0");
@@ -58,6 +58,13 @@ public class NewsUtils {
         news3.setItemMeta(news3Meta);
 
         inv.addItem(news3);
+
+        //News 4
+        ItemStack news4 = new ItemStack(Material.MAP, 1);
+        ItemMeta news4Meta = news4.getItemMeta();
+        ArrayList<String> news4Lore = new ArrayList<>();
+        news4Lore.add("   ");
+        news4Lore.add(ChatColor.GREEN + "#1 Fixed various problems in our server.");
     }
 
 }

@@ -17,9 +17,18 @@ public class ColorMessageListener implements Listener {
 
         String color = ChatColor.translateAlternateColorCodes('&', chat);
 
+        /*
+        TextComponent component = new TextComponent();
+        BaseComponent base = component.duplicate();
+        HoverEvent hover = new HoverEvent(HoverEvent.Action.SHOW_TEXT);
+        base.setHoverEvent(hover);
+        */
+
         Player player = event.getPlayer();
 
-        player.sendMessage(ChatColor.GREEN + "You successfully sent a colored message in chat");
+        if (color != chat){
+            player.sendMessage(ChatColor.GREEN + "You successfully sent a colored message in chat");
+        }
 
         player.chat(color);
 

@@ -134,6 +134,7 @@ public final class FirstServerPlugin extends JavaPlugin {
         getCommand("lock").setExecutor(new LockCommand());
         getCommand("holostick").setExecutor(new HoloStickCommand());
         getCommand("fallingblock").setExecutor(new FallingBlockCommand());
+        
 
         System.out.println("Loaded commands...");
 
