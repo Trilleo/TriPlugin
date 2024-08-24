@@ -1,18 +1,13 @@
 package me.firstserver.firstserverplugin;
 
 import me.firstserver.firstserverplugin.commands.*;
-import me.firstserver.firstserverplugin.customEnchants.GlowEnchantment;
 import me.firstserver.firstserverplugin.listeners.*;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 public final class FirstServerPlugin extends JavaPlugin {
@@ -40,7 +35,6 @@ public final class FirstServerPlugin extends JavaPlugin {
     private static Economy econ = null;
 
     private static FirstServerPlugin plugin;
-    public static GlowEnchantment glowEnchantment;
 
     public static FirstServerPlugin getPlugin(){
         return plugin;
@@ -55,28 +49,6 @@ public final class FirstServerPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        //UnregisterEnchants
-        try {
-            Field keyField = Enchantment.class.getDeclaredField("byKey");
-
-            keyField.setAccessible(true);
-            @SuppressWarnings("unchecked")
-            HashMap<NamespacedKey, Enchantment> byKey = (HashMap<NamespacedKey, Enchantment>) keyField.get(null);
-
-            if(byKey.containsKey(glowEnchantment.getKey())) {
-                byKey.remove(glowEnchantment.getKey());
-            }
-            Field nameField = Enchantment.class.getDeclaredField("byName");
-
-            nameField.setAccessible(true);
-            @SuppressWarnings("unchecked")
-            HashMap<String, Enchantment> byName = (HashMap<String, Enchantment>) nameField.get(null);
-
-            if(byName.containsKey(glowEnchantment.getName())) {
-                byName.remove(glowEnchantment.getName());
-            }
-        } catch (Exception ignored) { }
-
         System.out.println("Plugin for First Server has stopped!");
         System.out.println("Bye :)");
 
@@ -86,7 +58,6 @@ public final class FirstServerPlugin extends JavaPlugin {
     public void onEnable() {
 
         plugin = this;
-        glowEnchantment = new GlowEnchantment("Glow");
 
         //Text
         System.out.println("Plugin for First Server is loading...");
@@ -106,7 +77,6 @@ public final class FirstServerPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FinalSpawnerListener(), this);
         getServer().getPluginManager().registerEvents(new LaunchPadListener(this), this);
         getServer().getPluginManager().registerEvents(new LaunchDamageListener(this), this);
-        getServer().getPluginManager().registerEvents(glowEnchantment, this);
         getServer().getPluginManager().registerEvents(new WaterStickListener(), this);
         getServer().getPluginManager().registerEvents(new MainItemListener(), this);
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
@@ -130,16 +100,12 @@ public final class FirstServerPlugin extends JavaPlugin {
         getCommand("firstserver").setExecutor(new FirstServerCommand(this));
         getCommand("bangui").setExecutor(new BanGUICommand());
         getCommand("spawner").setExecutor(new SpawnerCommand());
-        getCommand("glowstick").setExecutor(new GlowStickCommand());
         getCommand("lock").setExecutor(new LockCommand());
         getCommand("holostick").setExecutor(new HoloStickCommand());
         getCommand("fallingblock").setExecutor(new FallingBlockCommand());
         
 
         System.out.println("Loaded commands...");
-
-        //RegisterEnchants
-        registerEnchantment(glowEnchantment);
 
         //Vault setup
         if (!setupEconomy() ) {
@@ -171,23 +137,6 @@ public final class FirstServerPlugin extends JavaPlugin {
 
     public static Economy getEconomy() {
         return econ;
-    }
-
-    //Enchants
-    public static void registerEnchantment(Enchantment enchantment) {
-        boolean registered = true;
-        try {
-            Field f = Enchantment.class.getDeclaredField("acceptingNew");
-            f.setAccessible(true);
-            f.set(null, true);
-            Enchantment.registerEnchantment(enchantment);
-        } catch (Exception e) {
-            registered = false;
-            e.printStackTrace();
-        }
-        if(registered){
-            // It's been registered!
-        }
     }
 
 }

@@ -31,7 +31,6 @@ public class ColorMessageListener implements Listener {
         }
 
         player.chat(color);
-
     }
 
 }
